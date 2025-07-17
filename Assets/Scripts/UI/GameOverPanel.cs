@@ -38,6 +38,7 @@ public class GameOverPanel : MonoBehaviour
 
     private void OnDisable()
     {
+        SoundManager.Instance.PlaySound();
         transform.DOScale(Vector3.zero, 0.3f);
         _settingButton.interactable = true;
         _settingButton.GetComponent<Image>().color = _settingOriginalColor;

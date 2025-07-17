@@ -279,6 +279,12 @@ public class GameManager : MonoBehaviour
         if (emptyCell == null)
         {
             _tilePool.Release(tile); //放回对象池
+
+            if(!IsGameOver())
+            {
+                _isMoving = false;
+            }
+
             return;
         }
 
@@ -286,7 +292,10 @@ public class GameManager : MonoBehaviour
 
         int index = UnityEngine.Random.Range(0, 2); //随机选择方块样式
 
-        tile.Spawn(emptyCell); //移动方块到空格子
+        tile.Spawn(emptyCell, () =>
+        {
+            _isMoving = false;
+        }); //移动方块到空格子
         tile.SetState(_tileStates[index], 2 * (index + 1)); //设置方块样式
 
         _tiles.Add(tile); //添加到游戏集合中
@@ -430,7 +439,7 @@ public class GameManager : MonoBehaviour
             remainingTime += _moveDuration;
             _maxMoveDurationTemp = remainingTime;
 
-            cell.Tile.DoSpawn(nextCell, remainingTime);
+            cell.Tile.DoMove(nextCell, remainingTime);
             return MoveTilePosition(nextCell, direction, remainingTime);
         }
     }
@@ -526,7 +535,6 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delayTime);
         CreateTile();
-        _isMoving = false;
 
         //重置所有方块的合并状态
         foreach (Tile tile in _tiles)

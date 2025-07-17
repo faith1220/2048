@@ -1,6 +1,7 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Tile : MonoBehaviour
@@ -42,7 +43,7 @@ public class Tile : MonoBehaviour
         _numberText.text = number.ToString();
     }
 
-    public void Spawn(TileCell cell)
+    public void Spawn(TileCell cell,UnityAction onSpawned = null)
     {
         if(Cell!= null)
         {
@@ -56,10 +57,13 @@ public class Tile : MonoBehaviour
         transform.position = cell.transform.position;
 
         //添加缩放动画
-        transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutBack);
+        transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutBack).OnComplete(() =>
+        {
+            onSpawned?.Invoke();
+        });
     }
 
-    public void DoSpawn(TileCell cell, float duration)
+    public void DoMove(TileCell cell, float duration)
     {
         if (Cell != null)
         {

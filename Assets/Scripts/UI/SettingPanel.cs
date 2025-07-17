@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -29,9 +30,20 @@ public class SettingPanel : MonoBehaviour
         InitializeVolumeControl(_soundGroup, _soundSlider, SOUND_VOLUME_PARAM, _openSoundImage, _closeSoundImage);
     }
 
-    private void OnEnable() => GameManager.Instance.GamePause();
+    private void OnEnable()
+    {
+        SoundManager.Instance.PlaySound();
+        GameManager.Instance.GamePause();
+        transform.localScale = Vector3.zero;
+        transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutBack);
+    }
 
-    private void OnDisable() => GameManager.Instance.GameResume();
+    private void OnDisable()
+    {
+        SoundManager.Instance.PlaySound();
+        GameManager.Instance.GameResume();
+        transform.DOScale(Vector3.zero, 0.3f);
+    }
 
     private void InitializeVolumeControl(AudioMixerGroup group, Slider slider, string paramName,
                                       GameObject openIcon, GameObject closeIcon)
