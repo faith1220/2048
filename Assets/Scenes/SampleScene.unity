@@ -3269,6 +3269,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 12d6b8a9245ae1745a4fbff620ec39ed, type: 2}
   - {fileID: 11400000, guid: ba9fb80ce00b45d4dac900782974e11d, type: 2}
   - {fileID: 11400000, guid: 7fbaafa4cd3f125409c2980f2742b444, type: 2}
+  - {fileID: 11400000, guid: 40c75d1541ef0d24488c5d910c028e74, type: 2}
+  - {fileID: 11400000, guid: b47a0abbb085ff84b86496a4fc44b409, type: 2}
+  - {fileID: 11400000, guid: 8e29691fbee7bd1489aace34186a33cf, type: 2}
+  - {fileID: 11400000, guid: 9e3690f800e3d9447bd489d9a71b8e58, type: 2}
+  - {fileID: 11400000, guid: 67b480de5b011d44a9d37451e49e770f, type: 2}
+  - {fileID: 11400000, guid: ebc67ce0782063f43b04555ec8a479b5, type: 2}
   _scoreText: {fileID: 1610861986}
   _tileGrid: {fileID: 869355651}
   _tileParent: {fileID: 596635787}

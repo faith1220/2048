@@ -290,7 +290,8 @@ public class GameManager : MonoBehaviour
 
         tile.gameObject.SetActive(true);
 
-        int index = UnityEngine.Random.Range(0, 2); //随机选择方块样式
+
+        int index = UnityEngine.Random.Range(0,10)<9? 0 : 1; //随机选择方块样式
 
         tile.Spawn(emptyCell, () =>
         {
